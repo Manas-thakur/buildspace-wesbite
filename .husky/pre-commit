@@ -1,0 +1,3 @@
+tsc -b
+npm run lint
+npm run build
