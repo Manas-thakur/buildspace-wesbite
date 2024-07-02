@@ -1,3 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+}
+@layer components {
+  .group-date {
+    @apply text-4xl text-gray-300
+            px-3 py-4
+            font-bold tracking-widest;
+  }
+  .timeline {
+    @apply border-l-4 border-gray-200
+            ml-3 mt-3 py-16 
+            space-y-14;
+  }
+  .dot {
+    @apply absolute top-5 -left-3.5
+            bg-purple-500
+            h-6 w-6
+            rounded-full
+            border-4 border-white;
+  }
+  .timeline-date {
+    @apply text-xs 
+            font-bold
+            tracking-widest
+            opacity-40;
+  }
+  .timeline-title {
+    @apply text-3xl text-gray-600 font-semibold
+            tracking-wide mt-2;
+  }
+}
