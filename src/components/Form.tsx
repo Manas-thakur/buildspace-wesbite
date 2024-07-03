@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "./ui/use-toast";
 import axios from "axios";
+import { Test } from "./Test";
+
+import { Dialog, DialogTrigger } from "./ui/dialog";
 
 const {
   VITE_CLOUDINAR_CLOUD_NAME: CLOUD_CLOUD_NAME,
@@ -15,8 +18,11 @@ export default function ImageUpload() {
   const previewImgRef = useRef<HTMLImageElement>(null);
 
   const [file, setfile] = useState<File | null>(null);
-  const [operateFilePath, setOperateFilePath] = useState("");
-
+  const [operateFilePath, setOperateFilePath] = useState(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZMKOCDUolrj_W1uqnFqj38q9QyPeTtBRysQ&s",
+  );
+  const [open, setOpen] = useState(false);
+  const [confidence, setConfidence] = useState(50);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -112,10 +118,41 @@ export default function ImageUpload() {
   return (
     <div className="flex flex-col items-center justify-center space-y-3">
       {operateFilePath ? (
-        <img src={operateFilePath} className="w-[500px] rounded-xl" alt="" />
+        <>
+          <img src={operateFilePath} className="w-[500px] rounded-xl" alt="" />
+          <div className="flex justify-center items-center">
+            <p className="mr-2">Condifence:</p>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={confidence}
+              onChange={(e) => setConfidence(Number(e.target.value))}
+              className="w-40"
+            />
+            <p className="ml-1">{confidence}</p>
+          </div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button
+                className="px-5 py-3 w-40 h-14 bg-black text-white rounded-xl"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                Test Image
+              </button>
+            </DialogTrigger>
+            <Test
+              image_url={operateFilePath}
+              open={open}
+              setOpen={setOpen}
+              confidence={confidence}
+            />
+          </Dialog>
+        </>
       ) : (
         <>
-          {" "}
           <div
             className={`w-[500px] rounded-xl overflow-hidden relative border-2 border-gray-300 ${
               imageUploading ? "border-none" : "border-dashed"
