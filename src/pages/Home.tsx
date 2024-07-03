@@ -23,9 +23,9 @@ export default function Home() {
           alt=""
         />
         <div className="absolute inset-0 flex flex-col justify-center text-white text-2xl p-5">
-          <p>Natural building is an artform.</p>
-          <p>We are all artists at eos design</p>
-          <p>studio and we invite you to get your hands muddy!</p>
+          <p>No need to ask </p>
+          <p>We are Smooth Operators</p>
+          <p> Smooooooth Operator</p>
         </div>
       </section>
       <Timeline />

@@ -7,13 +7,13 @@ import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
-    <div>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/demo" element={<Demo />} />
       </Routes>
       <Toaster />
-    </div>
+    </>
   );
 }

@@ -18,9 +18,7 @@ export default function ImageUpload() {
   const previewImgRef = useRef<HTMLImageElement>(null);
 
   const [file, setfile] = useState<File | null>(null);
-  const [operateFilePath, setOperateFilePath] = useState(
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZMKOCDUolrj_W1uqnFqj38q9QyPeTtBRysQ&s",
-  );
+  const [operateFilePath, setOperateFilePath] = useState("");
   const [open, setOpen] = useState(false);
   const [confidence, setConfidence] = useState(50);
   const { toast } = useToast();
